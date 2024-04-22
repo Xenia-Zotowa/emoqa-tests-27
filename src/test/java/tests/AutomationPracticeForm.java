@@ -37,14 +37,22 @@ public class AutomationPracticeForm {
         $("#subjectsInput").setValue("Maths").pressEnter();
         $("#hobbies-checkbox-2+label").click();
         $("#uploadPicture").scrollIntoView(true);
-        SelenideElement fileInput = $(byCssSelector("#uploadPicture"));
-        fileInput.uploadFromClasspath("images/S.jpg");
+        $("#uploadPicture").uploadFromClasspath("S.jpg");
         $("#currentAddress").setValue("Test");
         $("#stateCity-wrapper").click();
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("#react-select-4-input").setValue("Delhi").pressEnter();
         $("#submit").click();
 
+        $(".table-responsive").shouldHave(text("Test Tests"));
+        $(".table-responsive").shouldHave(text("Test@test.com"));
+        $(".table-responsive").shouldHave(text("0123456789"));
+        $(".table-responsive").shouldHave(text("Male"));
+        $(".table-responsive").shouldHave(text("16 January,2000"));
+        $(".table-responsive").shouldHave(text("Maths"));
+        $(".table-responsive").shouldHave(text("S.jpg"));
+        $(".table-responsive").shouldHave(text("Test"));
+        $(".table-responsive").shouldHave(text("NCR Delhi"));
 
 
 
