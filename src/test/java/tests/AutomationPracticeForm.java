@@ -29,7 +29,7 @@ public class AutomationPracticeForm {
         $("#firstName").setValue("Test");
         $("#lastName").setValue("Tests");
         $("#userEmail").setValue("Test@test.com");
-        $(".custom-control-label").click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("0123456789");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-dropdown-container").click();
@@ -38,6 +38,7 @@ public class AutomationPracticeForm {
         $(".react-datepicker__year-select").selectOption("2000");
         $(".react-datepicker__day--016").click();
         $("#subjectsInput").setValue("Maths").pressEnter();
+
         $("#hobbiesWrapper").click();
         $("#uploadPicture").uploadFromClasspath("S.jpg");
         $("#currentAddress").setValue("Test");
