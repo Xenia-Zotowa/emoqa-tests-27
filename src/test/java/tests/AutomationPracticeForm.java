@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byCssSelector;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class AutomationPracticeForm {
@@ -18,11 +18,14 @@ public class AutomationPracticeForm {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
+
     }
 
     @Test
     void fillFormTest() {
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $("#firstName").setValue("Test");
         $("#lastName").setValue("Tests");
         $("#userEmail").setValue("Test@test.com");
@@ -35,13 +38,13 @@ public class AutomationPracticeForm {
         $(".react-datepicker__year-select").selectOption("2000");
         $(".react-datepicker__day--016").click();
         $("#subjectsInput").setValue("Maths").pressEnter();
-        $("#hobbies-checkbox-2+label").click();
-        $("#uploadPicture").scrollIntoView(true);
+        $("#hobbiesWrapper").click();
         $("#uploadPicture").uploadFromClasspath("S.jpg");
         $("#currentAddress").setValue("Test");
         $("#stateCity-wrapper").click();
-        $("#react-select-3-input").setValue("NCR").pressEnter();
-        $("#react-select-4-input").setValue("Delhi").pressEnter();
+        $("#state").$(byText("NCR")).click();
+        $("#city").click();
+        $("#city").$(byText("Delhi")).click();
         $("#submit").click();
 
         $(".table-responsive").shouldHave(text("Test Tests"));
