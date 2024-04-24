@@ -39,7 +39,7 @@ public class AutomationPracticeForm {
         $(".react-datepicker__day--016").click();
         $("#subjectsInput").setValue("Maths").pressEnter();
 
-        $("#hobbiesWrapper").click();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("S.jpg");
         $("#currentAddress").setValue("Test");
         $("#stateCity-wrapper").click();
@@ -54,6 +54,7 @@ public class AutomationPracticeForm {
         $(".table-responsive").shouldHave(text("Male"));
         $(".table-responsive").shouldHave(text("16 January,2000"));
         $(".table-responsive").shouldHave(text("Maths"));
+        $(".table-responsive").shouldHave(text("Sports"));
         $(".table-responsive").shouldHave(text("S.jpg"));
         $(".table-responsive").shouldHave(text("Test"));
         $(".table-responsive").shouldHave(text("NCR Delhi"));
