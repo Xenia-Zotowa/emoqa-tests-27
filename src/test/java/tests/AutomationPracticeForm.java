@@ -1,13 +1,9 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -38,7 +34,6 @@ public class AutomationPracticeForm {
         $(".react-datepicker__year-select").selectOption("2000");
         $(".react-datepicker__day--016").click();
         $("#subjectsInput").setValue("Maths").pressEnter();
-
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("S.jpg");
         $("#currentAddress").setValue("Test");
@@ -47,7 +42,6 @@ public class AutomationPracticeForm {
         $("#city").click();
         $("#city").$(byText("Delhi")).click();
         $("#submit").click();
-
         $(".table-responsive").shouldHave(text("Test Tests"));
         $(".table-responsive").shouldHave(text("Test@test.com"));
         $(".table-responsive").shouldHave(text("0123456789"));
