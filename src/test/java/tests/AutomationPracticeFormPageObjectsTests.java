@@ -2,14 +2,11 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 
 
 public class AutomationPracticeFormPageObjectsTests {
@@ -20,12 +17,18 @@ public class AutomationPracticeFormPageObjectsTests {
         Configuration.baseUrl = "https://demoqa.com";
 
     }
+    @AfterEach
+    void afterEach() {
+        Selenide.closeWebDriver();
+    }
+
 RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void fillFormTest() {
 
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Test")
                 .setLastName("Tests")
                 .setEmail("Test@test.com")

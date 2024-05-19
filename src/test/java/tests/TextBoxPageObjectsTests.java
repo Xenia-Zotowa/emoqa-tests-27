@@ -1,13 +1,13 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+
 
 public class TextBoxPageObjectsTests {
 
@@ -17,6 +17,12 @@ public class TextBoxPageObjectsTests {
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
     }
+
+    @AfterEach
+    void afterEach() {
+        Selenide.closeWebDriver();
+    }
+
     TextBoxPage textBoxPage = new TextBoxPage();
 
     @Test
