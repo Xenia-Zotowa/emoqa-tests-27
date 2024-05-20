@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.selector.ByText;
+import com.github.javafaker.Faker;
 import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.cssValue;
@@ -10,6 +11,9 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
+    Faker faker = new Faker();
+    public String state = faker.options().option("NCR","Uttar Pradesh","Haryana", "Rajasthan");
+
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
@@ -26,6 +30,7 @@ public class RegistrationPage {
             cityInput = $("#city"),
             submitButton = $("#submit")
             ;
+
 
     CalendarComponent calendarComponent = new CalendarComponent();
 
@@ -121,4 +126,27 @@ public class RegistrationPage {
         return this;
 
     }
+
+
+
+    public String city() {
+        Faker faker = new Faker();
+
+        String city = "";
+        if (state.equals("NCR")) {
+            city = faker.options().option("Delhi", "Gurgaon", "Noida");
+        }
+        if (state.equals("Uttar Pradesh")) {
+            city = faker.options().option("Agra", "Lucknow", "Merrut");
+        }
+        if (state.equals("Haryana")) {
+            city = faker.options().option("Karnal", "Panipat");
+        }
+        if (state.equals("Rajasthan")) {
+            city = faker.options().option("Jaipur", "Jaiselmer");
+        }
+        return city;
+    }
+
+
 }
