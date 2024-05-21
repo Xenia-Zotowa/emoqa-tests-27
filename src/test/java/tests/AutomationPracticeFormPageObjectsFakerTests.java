@@ -37,7 +37,7 @@ public class AutomationPracticeFormPageObjectsFakerTests {
                 .setEmail(fakerRandom.userEmail)
                 .setGender(fakerRandom.gender)
                 .setUserNumber(fakerRandom.userPhone)
-                .setSabjects(fakerRandom.sabjects)
+                .setSubjects(fakerRandom.sabjects)
                 .hobbiesWrapper(fakerRandom.hobbies)
                 .loadingImage("S.jpg")
                 .currentAddress(fakerRandom.streetAddress)
@@ -78,7 +78,7 @@ public class AutomationPracticeFormPageObjectsFakerTests {
         registrationPage.openPage()
                 .clickSubmit();
 
-        registrationPage.checkColorRed();
+        registrationPage.checkOutColorRed();
     }
 }
 

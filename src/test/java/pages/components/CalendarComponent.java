@@ -1,14 +1,14 @@
 package pages.components;
 
+
 import static com.codeborne.selenide.Selenide.$;
 
 public class CalendarComponent {
 
-    public void setDate(String day, String mont, String year) {
-        $(".react-datepicker__month-dropdown-container").click();
-        $(".react-datepicker__month-select>[value='0']").click();
-        $(".react-datepicker__year-dropdown-container").click();
-        $(".react-datepicker__year-select").selectOption("2000");
-        $(".react-datepicker__day--016").click();
+    public void setDate(String day, String month, String year) {
+        $(".react-datepicker__month-select").selectOption(month);
+        $(".react-datepicker__year-select").selectOption(year);
+        String formattedDay =  Integer.parseInt(day) > 9 ? day : "0" + day;
+        $(String.format(".react-datepicker__day--0%s:not(.react-datepicker__day--outside-month)", formattedDay)).click();
     }
-}
+        }

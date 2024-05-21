@@ -77,7 +77,7 @@ public class RegistrationPage {
       return this;
    }
 
-    public RegistrationPage setSabjects(String value) {
+    public RegistrationPage setSubjects(String value) {
         subjectsInput.setValue(value).pressEnter();
         return this;
     }
@@ -125,7 +125,7 @@ public class RegistrationPage {
 
     }
 
-    public RegistrationPage checkColorRed () {
+    public RegistrationPage checkOutColorRed () {
         firstNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         lastNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         userNumberInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
