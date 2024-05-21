@@ -10,7 +10,7 @@ import pages.RegistrationPage;
 
 
 public class AutomationPracticeFormPageObjectsFakerTests {
-
+    RegistrationPage registrationPage = new RegistrationPage();
     Faker faker = new Faker();
     String firstName = faker.name().firstName();
     String lastName = faker.name().lastName();
@@ -20,35 +20,23 @@ public class AutomationPracticeFormPageObjectsFakerTests {
     String gender = faker.options().option("Male", "Female", "Other");
     String sabjects = faker.options().option("Maths","Chemistry","English", "Computer Science");
     String hobbies = faker.options().option("Sports", "Reading", "Music");
-    String day = String.valueOf(faker.number().numberBetween(1,28));
-    String moth = faker.options().option("December","January","February",
-                                          "March","April","May","June",
-                                          "July", "August","September",
-                                          "October","November");
-    String year = String.valueOf(faker.number().numberBetween(1980,2020));
-
-
-
-
-
+  public   String state = faker.options().option("NCR","Uttar Pradesh","Haryana", "Rajasthan");
+  public String city = registrationPage.setCity().toString();
     @BeforeAll
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
-
-
     }
     @AfterEach
     void afterEach() {
         Selenide.closeWebDriver();
     }
 
-RegistrationPage registrationPage = new RegistrationPage();
+
 
     @Test
     void fillFormTest() {
-
 
         registrationPage.openPage()
                 .removeBanner()
@@ -57,27 +45,26 @@ RegistrationPage registrationPage = new RegistrationPage();
                 .setEmail(userEmail)
                 .setGender(gender)
                 .setUserNumber(userPhone)
-                .setDataOfBirt(day , moth , year)
                 .setSabjects(sabjects)
                 .hobbiesWrapper(hobbies)
                 .loadingImage("S.jpg")
                 .currentAddress(streetAddress)
-                .stateCity(registrationPage.state)
-                .setCity(registrationPage.city())
-                .setSubmit()
+                .setStateCity(state)
+                .setDataOfBirt(registrationPage.day , registrationPage.month , registrationPage.year)
+                .setCity()
+                .clickSubmit()
         ;
 
-        String city;
         registrationPage.checkResult("Student Name", firstName + " " + lastName)
                 .checkResult("Student Email", userEmail)
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", userPhone)
-                .checkResult("Date of Birth", String.format(day + " " + moth + "," + year))
+                .checkResult("Date of Birth", String.format(registrationPage.day + " " + registrationPage.month + "," + registrationPage.year))
                 .checkResult("Subjects", sabjects)
                 .checkResult("Hobbies", hobbies)
                 .checkResult("Picture", "S.jpg")
                 .checkResult("Address", streetAddress)
-                .checkResult("State and City", registrationPage.state + " " + registrationPage.city());
+                .checkResult("State and City", state + " " + city);
     }
 
     @Test
@@ -88,7 +75,7 @@ RegistrationPage registrationPage = new RegistrationPage();
                 .setLastName(lastName)
                 .setGender(gender)
                 .setUserNumber(userPhone)
-                .setSubmit();
+                .clickSubmit();
         registrationPage.checkResult("Student Name", firstName + " " + lastName)
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", userPhone);
@@ -97,7 +84,7 @@ RegistrationPage registrationPage = new RegistrationPage();
     @Test
     void negativeFormTest(){
         registrationPage.openPage()
-                .setSubmit();
+                .clickSubmit();
 
         registrationPage.checkColorRed();
     }
