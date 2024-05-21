@@ -7,21 +7,13 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import pages.faker.FakerRandom;
 
 
 public class AutomationPracticeFormPageObjectsFakerTests {
     RegistrationPage registrationPage = new RegistrationPage();
-    Faker faker = new Faker();
-    String firstName = faker.name().firstName();
-    String lastName = faker.name().lastName();
-    String userEmail = faker.internet().emailAddress();
-    String streetAddress = faker.address().streetAddress();
-    String userPhone = faker.phoneNumber().subscriberNumber(10);
-    String gender = faker.options().option("Male", "Female", "Other");
-    String sabjects = faker.options().option("Maths","Chemistry","English", "Computer Science");
-    String hobbies = faker.options().option("Sports", "Reading", "Music");
-  public   String state = faker.options().option("NCR","Uttar Pradesh","Haryana", "Rajasthan");
-  public String city = registrationPage.setCity().toString();
+    FakerRandom fakerRandom = new FakerRandom();
+
     @BeforeAll
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
@@ -40,45 +32,45 @@ public class AutomationPracticeFormPageObjectsFakerTests {
 
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(userEmail)
-                .setGender(gender)
-                .setUserNumber(userPhone)
-                .setSabjects(sabjects)
-                .hobbiesWrapper(hobbies)
+                .setFirstName(fakerRandom.firstName)
+                .setLastName(fakerRandom.lastName)
+                .setEmail(fakerRandom.userEmail)
+                .setGender(fakerRandom.gender)
+                .setUserNumber(fakerRandom.userPhone)
+                .setSabjects(fakerRandom.sabjects)
+                .hobbiesWrapper(fakerRandom.hobbies)
                 .loadingImage("S.jpg")
-                .currentAddress(streetAddress)
-                .setStateCity(state)
-                .setDataOfBirt(registrationPage.day , registrationPage.month , registrationPage.year)
-                .setCity()
+                .currentAddress(fakerRandom.streetAddress)
+                .setStateCity(fakerRandom.state)
+               .setDataOfBirt(fakerRandom.day , fakerRandom.month , fakerRandom.year)
+                .setCity(fakerRandom.city)
                 .clickSubmit()
         ;
 
-        registrationPage.checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Student Email", userEmail)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile", userPhone)
-                .checkResult("Date of Birth", String.format(registrationPage.day + " " + registrationPage.month + "," + registrationPage.year))
-                .checkResult("Subjects", sabjects)
-                .checkResult("Hobbies", hobbies)
+        registrationPage.checkResult("Student Name", fakerRandom.firstName + " " + fakerRandom.lastName)
+                .checkResult("Student Email", fakerRandom.userEmail)
+                .checkResult("Gender", fakerRandom.gender)
+                .checkResult("Mobile", fakerRandom.userPhone)
+                .checkResult("Date of Birth", String.format(fakerRandom.day + " " + fakerRandom.month + "," + fakerRandom.year))
+                .checkResult("Subjects", fakerRandom.sabjects)
+                .checkResult("Hobbies", fakerRandom.hobbies)
                 .checkResult("Picture", "S.jpg")
-                .checkResult("Address", streetAddress)
-                .checkResult("State and City", state + " " + city);
+                .checkResult("Address", fakerRandom.streetAddress)
+                .checkResult("State and City", fakerRandom.state + " " + fakerRandom.city);
     }
 
     @Test
     void miniFormTest(){
 
         registrationPage.openPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setGender(gender)
-                .setUserNumber(userPhone)
+                .setFirstName(fakerRandom.firstName)
+                .setLastName(fakerRandom.lastName)
+                .setGender(fakerRandom.gender)
+                .setUserNumber(fakerRandom.userPhone)
                 .clickSubmit();
-        registrationPage.checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile", userPhone);
+        registrationPage.checkResult("Student Name", fakerRandom.firstName + " " + fakerRandom.lastName)
+                .checkResult("Gender", fakerRandom.gender)
+                .checkResult("Mobile", fakerRandom.userPhone);
     }
 
     @Test

@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.selector.ByText;
 import com.github.javafaker.Faker;
 import pages.components.CalendarComponent;
+import pages.faker.FakerRandom;
 import tests.AutomationPracticeFormPageObjectsFakerTests;
 
 import static com.codeborne.selenide.Condition.cssValue;
@@ -12,12 +13,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
-    AutomationPracticeFormPageObjectsFakerTests automationPracticeFormPageObjectsFakerTests = new AutomationPracticeFormPageObjectsFakerTests();
-    Faker faker = new Faker();
 
-    public String day = String.valueOf(faker.number().numberBetween(1,28));
-    public String month = faker.options().option("December","January","February", "March","April","May","June", "July", "August","September", "October","November");
-    public String year = String.valueOf(faker.number().numberBetween(1980,2020));
 
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
@@ -74,11 +70,12 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setDataOfBirt(String day, String mont, String year) {
-        calendarInpyt.click();
-        calendarComponent.setDate(day, mont, year);
-        return this;
-    }
+   public RegistrationPage setDataOfBirt(String day, String mont, String year) {
+
+     calendarInpyt.click();
+      calendarComponent.setDate(day, mont, year);
+      return this;
+   }
 
     public RegistrationPage setSabjects(String value) {
         subjectsInput.setValue(value).pressEnter();
@@ -107,26 +104,12 @@ public class RegistrationPage {
         return  this;
     }
 
-    public RegistrationPage setCity() {
-
-       Faker faker = new Faker();
 
 
-      if (automationPracticeFormPageObjectsFakerTests.state.equals("NCR")) {
-          automationPracticeFormPageObjectsFakerTests.city = faker.options().option("Delhi", "Gurgaon", "Noida");
-        }
-      if (automationPracticeFormPageObjectsFakerTests.state.equals("Uttar Pradesh")) {
-          automationPracticeFormPageObjectsFakerTests.city = faker.options().option("Agra", "Lucknow", "Merrut");
-       }
-      if (automationPracticeFormPageObjectsFakerTests.state.equals("Haryana")) {
-          automationPracticeFormPageObjectsFakerTests.city = faker.options().option("Karnal", "Panipat");
-       }
-       if (automationPracticeFormPageObjectsFakerTests.state.equals("Rajasthan")) {
-           automationPracticeFormPageObjectsFakerTests.city = faker.options().option("Jaipur", "Jaiselmer");
-        }
+        public RegistrationPage setCity(String value) {
 
         cityInput.click();
-        cityInput.$(byText(automationPracticeFormPageObjectsFakerTests.city)).click();
+        cityInput.$(byText(value)).click();
         return this;
     }
 
