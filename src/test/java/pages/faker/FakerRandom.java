@@ -18,6 +18,9 @@ public class FakerRandom {
     public String gender = faker.options().option("Male", "Female", "Other");
     public String sabjects = faker.options().option("Maths","Chemistry","English", "Computer Science");
     public String hobbies = faker.options().option("Sports", "Reading", "Music");
+    public String photo = faker.options().option("25.jpg", "S.jpg");
+
+
 
     public String getRandomCity() {
 

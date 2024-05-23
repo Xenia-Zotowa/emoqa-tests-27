@@ -39,7 +39,7 @@ public class AutomationPracticeFormPageObjectsFakerTests {
                 .setUserNumber(fakerRandom.userPhone)
                 .setSubjects(fakerRandom.sabjects)
                 .hobbiesWrapper(fakerRandom.hobbies)
-                .loadingImage("S.jpg")
+                .loadingImage(fakerRandom.photo)
                 .currentAddress(fakerRandom.streetAddress)
                 .setStateCity(fakerRandom.state)
                .setDataOfBirt(fakerRandom.day , fakerRandom.month , fakerRandom.year)
@@ -54,7 +54,7 @@ public class AutomationPracticeFormPageObjectsFakerTests {
                 .checkResult("Date of Birth", String.format(fakerRandom.day + " " + fakerRandom.month + "," + fakerRandom.year))
                 .checkResult("Subjects", fakerRandom.sabjects)
                 .checkResult("Hobbies", fakerRandom.hobbies)
-                .checkResult("Picture", "S.jpg")
+                .checkResult("Picture", fakerRandom.photo)
                 .checkResult("Address", fakerRandom.streetAddress)
                 .checkResult("State and City", fakerRandom.state + " " + fakerRandom.city);
     }
