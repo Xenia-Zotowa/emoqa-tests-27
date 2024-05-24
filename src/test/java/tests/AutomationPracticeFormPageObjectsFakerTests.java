@@ -1,13 +1,8 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.github.javafaker.Faker;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
+import faker.FakerRandom;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-import pages.faker.FakerRandom;
 
 
 public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
