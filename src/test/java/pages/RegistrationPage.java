@@ -2,10 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.selector.ByText;
-import com.github.javafaker.Faker;
 import pages.components.CalendarComponent;
-import pages.faker.FakerRandom;
-import tests.AutomationPracticeFormPageObjectsFakerTests;
 
 import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Condition.text;
@@ -82,7 +79,7 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage hobbiesWrapper(String value) {
+    public RegistrationPage setHobbiesWrapper(String value) {
         hobbiesWrapperInput.$(byText(value)).click();
         return this;
     }
@@ -92,7 +89,7 @@ public class RegistrationPage {
         return  this;
     }
 
-    public RegistrationPage currentAddress(String value) {
+    public RegistrationPage setCurrentAddress(String value) {
         currentAddressInput.setValue(value);
         return this;
     }
@@ -113,9 +110,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage clickSubmit() {
+    public void clickSubmit() {
         submitButton.click();
-        return this;
     }
 
     public RegistrationPage checkResult(String key, String value) {
@@ -125,11 +121,10 @@ public class RegistrationPage {
 
     }
 
-    public RegistrationPage checkOutColorRed () {
+    public void checkOutColorRed () {
         firstNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         lastNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         userNumberInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
-        return this;
 
     }
 

@@ -10,21 +10,9 @@ import pages.RegistrationPage;
 import pages.faker.FakerRandom;
 
 
-public class AutomationPracticeFormPageObjectsFakerTests {
+public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     FakerRandom fakerRandom = new FakerRandom();
-
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.browserSize = "1920x1080";
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.baseUrl = "https://demoqa.com";
-    }
-    @AfterEach
-    void afterEach() {
-        Selenide.closeWebDriver();
-    }
-
 
 
     @Test
@@ -38,11 +26,11 @@ public class AutomationPracticeFormPageObjectsFakerTests {
                 .setGender(fakerRandom.gender)
                 .setUserNumber(fakerRandom.userPhone)
                 .setSubjects(fakerRandom.sabjects)
-                .hobbiesWrapper(fakerRandom.hobbies)
+                .setHobbiesWrapper(fakerRandom.hobbies)
                 .loadingImage(fakerRandom.photo)
-                .currentAddress(fakerRandom.streetAddress)
+                .setCurrentAddress(fakerRandom.streetAddress)
                 .setStateCity(fakerRandom.state)
-               .setDataOfBirt(fakerRandom.day , fakerRandom.month , fakerRandom.year)
+                .setDataOfBirt(fakerRandom.day , fakerRandom.month , fakerRandom.year)
                 .setCity(fakerRandom.city)
                 .clickSubmit()
         ;

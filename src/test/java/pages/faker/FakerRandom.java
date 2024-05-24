@@ -9,7 +9,7 @@ public class FakerRandom {
     public String month = faker.options().option("December","January","February", "March","April","May","June", "July", "August","September", "October","November");
     public String year = String.valueOf(faker.number().numberBetween(1980,2020));
     public String state = faker.options().option("NCR","Uttar Pradesh","Haryana", "Rajasthan");
-    public String city = getRandomCity();
+    public String city = getRandomCity(state);
     public String firstName = faker.name().firstName();
     public String lastName = faker.name().lastName();
     public String userEmail = faker.internet().emailAddress();
@@ -22,19 +22,18 @@ public class FakerRandom {
 
 
 
-    public String getRandomCity() {
+        public String getRandomCity(String value){
 
-
-        if (state.equals("NCR")) {
+        if (value.equals("NCR")) {
             city = faker.options().option("Delhi", "Gurgaon", "Noida");
         }
-        if (state.equals("Uttar Pradesh")) {
+        if (value.equals("Uttar Pradesh")) {
             city = faker.options().option("Agra", "Lucknow", "Merrut");
         }
-        if (state.equals("Haryana")) {
+        if (value.equals("Haryana")) {
             city = faker.options().option("Karnal", "Panipat");
         }
-        if (state.equals("Rajasthan")) {
+        if (value.equals("Rajasthan")) {
             city = faker.options().option("Jaipur", "Jaiselmer");
         }
         return city;
