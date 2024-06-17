@@ -10,6 +10,8 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
+
+
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
@@ -26,6 +28,7 @@ public class RegistrationPage {
             cityInput = $("#city"),
             submitButton = $("#submit")
             ;
+
 
     CalendarComponent calendarComponent = new CalendarComponent();
 
@@ -64,18 +67,19 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setDataOfBirt(String day, String mont, String year) {
-        calendarInpyt.click();
-        calendarComponent.setDate(day, mont, year);
-        return this;
-    }
+   public RegistrationPage setDataOfBirt(String day, String mont, String year) {
 
-    public RegistrationPage setSabjects(String value) {
+     calendarInpyt.click();
+      calendarComponent.setDate(day, mont, year);
+      return this;
+   }
+
+    public RegistrationPage setSubjects(String value) {
         subjectsInput.setValue(value).pressEnter();
         return this;
     }
 
-    public RegistrationPage hobbiesWrapper(String value) {
+    public RegistrationPage setHobbiesWrapper(String value) {
         hobbiesWrapperInput.$(byText(value)).click();
         return this;
     }
@@ -85,26 +89,29 @@ public class RegistrationPage {
         return  this;
     }
 
-    public RegistrationPage currentAddress(String value) {
+    public RegistrationPage setCurrentAddress(String value) {
         currentAddressInput.setValue(value);
         return this;
     }
 
-    public RegistrationPage stateCity(String value) {
+    public RegistrationPage setStateCity(String value) {
+
         stateCityInput.click();
         stateInput.$(byText(value)).click();
         return  this;
     }
 
-    public RegistrationPage setCity(String value) {
+
+
+        public RegistrationPage setCity(String value) {
+
         cityInput.click();
         cityInput.$(byText(value)).click();
         return this;
     }
 
-    public RegistrationPage setSubmit() {
+    public void clickSubmit() {
         submitButton.click();
-        return this;
     }
 
     public RegistrationPage checkResult(String key, String value) {
@@ -114,11 +121,16 @@ public class RegistrationPage {
 
     }
 
-    public RegistrationPage checkColorRed () {
+    public void checkOutColorRed () {
         firstNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         lastNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         userNumberInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
-        return this;
 
     }
+
+
+
+
+
+
 }

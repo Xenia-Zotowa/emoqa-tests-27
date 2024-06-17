@@ -8,17 +8,14 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+public class TestBase {
 
-public class TextBoxTests {
 
+    @Tag("demoqa")
     @BeforeAll
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
@@ -34,6 +31,7 @@ public class TextBoxTests {
         SelenideLogger.addListener("AllureSlenide", new AllureSelenide());
     }
 
+    @Tag("demoqa")
     @AfterEach
     void afterEach() {
 
@@ -43,24 +41,5 @@ public class TextBoxTests {
         Attach.browserConsoleLogs();
         Attach.addVideo();
     }
-
-    @Test
-    @Tag("demoqa")
-    void fillFormTest() {
-        open("/text-box");
-        $("#userName").setValue("Test");
-        $("#userEmail").setValue("Test@test.com");
-        $("#currentAddress").setValue("Test street 1");
-        $("#permanentAddress").setValue("Test1 street 1");
-        $("#submit").click();
-
-        $("#output #name").shouldHave(text("Test"));
-        $("#output #email").shouldHave(text("Test@test.com"));
-        $("#output #currentAddress").shouldHave(text("Test street 1"));
-        $("#output #permanentAddress").shouldHave(text("Test1 street 1"));
-
-
-    }
-
 
 }
