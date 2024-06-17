@@ -1,6 +1,7 @@
 package tests;
 
 import faker.FakerRandom;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
@@ -11,6 +12,7 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
 
 
     @Test
+    @Tag("demoqa")
     void fillFormTest() {
 
         registrationPage.openPage()
@@ -43,6 +45,7 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
     }
 
     @Test
+    @Tag("demoqa")
     void miniFormTest(){
 
         registrationPage.openPage()
@@ -57,6 +60,7 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
     }
 
     @Test
+    @Tag("demoqa")
     void negativeFormTest(){
         registrationPage.openPage()
                 .clickSubmit();
