@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
+import static com.codeborne.selenide.logevents.SelenideLogger.step;
+
 
 public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
@@ -12,7 +14,6 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
 
 
     @Test
-    @Tag("demoqa")
     void fillFormTest() {
 
         registrationPage.openPage()
@@ -32,6 +33,7 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
                 .clickSubmit()
         ;
 
+
         registrationPage.checkResult("Student Name", fakerRandom.firstName + " " + fakerRandom.lastName)
                 .checkResult("Student Email", fakerRandom.userEmail)
                 .checkResult("Gender", fakerRandom.gender)
@@ -42,10 +44,11 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
                 .checkResult("Picture", fakerRandom.photo)
                 .checkResult("Address", fakerRandom.streetAddress)
                 .checkResult("State and City", fakerRandom.state + " " + fakerRandom.city);
+
     }
 
     @Test
-    @Tag("demoqa")
+
     void miniFormTest(){
 
         registrationPage.openPage()
@@ -54,14 +57,17 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
                 .setGender(fakerRandom.gender)
                 .setUserNumber(fakerRandom.userPhone)
                 .clickSubmit();
+
+
         registrationPage.checkResult("Student Name", fakerRandom.firstName + " " + fakerRandom.lastName)
                 .checkResult("Gender", fakerRandom.gender)
                 .checkResult("Mobile", fakerRandom.userPhone);
+
     }
 
     @Test
-    @Tag("demoqa")
     void negativeFormTest(){
+
         registrationPage.openPage()
                 .clickSubmit();
 

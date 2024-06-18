@@ -15,31 +15,31 @@ import java.util.Map;
 public class TestBase {
 
 
-    @Tag("demoqa")
+
     @BeforeAll
     static void beforeAll() {
-        Configuration.browserSize = "1920x1080";
-        Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browserSize = "1920x1080";
+        Configuration.timeout = 10000;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
-        SelenideLogger.addListener("AllureSlenide", new AllureSelenide());
+
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
-    @Tag("demoqa")
     @AfterEach
-    void afterEach() {
-
-        Selenide.closeWebDriver();
+    void addAttachments() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+
     }
 
 }

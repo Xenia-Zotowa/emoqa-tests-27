@@ -12,7 +12,7 @@ public class TextBoxPage {
                             userEmailInput = $("#userEmail"),
                             currentAddressInput =  $("#currentAddress"),
                             permanentAddressInput =  $("#permanentAddress"),
-                            submitInput = $("#submit"),
+                            submitInput = $(".text-right #submit"),
                             outputNameInput =  $("#output #name"),
                             outputEmailInput = $("#output #email"),
                             outputCurrentAddressInput = $("#output #currentAddress"),

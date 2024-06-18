@@ -26,7 +26,7 @@ public class RegistrationPage {
             stateCityInput = $("#stateCity-wrapper"),
             stateInput = $("#state"),
             cityInput = $("#city"),
-            submitButton = $("#submit")
+            submitButton = $(".text-right #submit")
             ;
 
 
