@@ -35,8 +35,19 @@ dependencies {
 }
 
 
-tasks.withType(Test).configureEach {
-    useJUnitPlatform {
-        includeTags("demoqa")
+//tasks.withType(Test).configureEach {
+  //  useJUnitPlatform {
+   //     includeTags("demoqa")
+  //  }
+//}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "passed", "skipped", "failed", "standardOut", "standardError"
+            exceptionFormat "full"
+        }
     }
 }
