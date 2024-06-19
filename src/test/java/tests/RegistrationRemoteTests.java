@@ -43,6 +43,7 @@ public class RegistrationRemoteTests {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+        closeWebDriver();
 
     }
 
