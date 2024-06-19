@@ -5,15 +5,15 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-import static com.codeborne.selenide.logevents.SelenideLogger.step;
-
 
 public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
+
     RegistrationPage registrationPage = new RegistrationPage();
     FakerRandom fakerRandom = new FakerRandom();
 
 
     @Test
+    @Tag("demoqa")
     void fillFormTest() {
 
         registrationPage.openPage()

@@ -24,17 +24,15 @@ public class RegistrationRemoteTests {
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-//        Configuration.browser = "chrome";
         Configuration.timeout = 10000;
-//        Configuration.holdBrowserOpen = true;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+       // Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
+      DesiredCapabilities capabilities = new DesiredCapabilities();
+       capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+              "enableVNC", true,
                 "enableVideo", true
-        ));
-        Configuration.browserCapabilities = capabilities;
+       ));
+       Configuration.browserCapabilities = capabilities;
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
@@ -51,7 +49,7 @@ public class RegistrationRemoteTests {
     @Test
     @Tag("demoqa")
     void successfulRegistrationTest() {
-        step("Open form", () -> {
+        step("Открываем страницу", () -> {
             open("/automation-practice-form");
             $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
             executeJavaScript("$('#fixedban').remove()");
