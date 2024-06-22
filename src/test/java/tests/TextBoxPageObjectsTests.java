@@ -2,7 +2,6 @@ package tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 
@@ -14,7 +13,7 @@ public class TextBoxPageObjectsTests extends TestBase {
     TextBoxPage textBoxPage = new TextBoxPage();
 
     @Test
-    @Tag("demoqa")
+
     void fillFormTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 

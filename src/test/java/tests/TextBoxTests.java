@@ -2,7 +2,6 @@ package tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -12,7 +11,7 @@ import static io.qameta.allure.Allure.step;
 public class TextBoxTests extends TestBase {
 
     @Test
-    @Tag("demoqa")
+
     void fillFormTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 

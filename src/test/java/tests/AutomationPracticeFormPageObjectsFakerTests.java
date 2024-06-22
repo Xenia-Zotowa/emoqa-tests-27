@@ -9,7 +9,7 @@ import pages.RegistrationPage;
 
 import static io.qameta.allure.Allure.step;
 
-
+@Tag("demoqa")
 public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
@@ -17,7 +17,7 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
 
 
     @Test
-    @Tag("demoqa")
+
     void fillFormTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 

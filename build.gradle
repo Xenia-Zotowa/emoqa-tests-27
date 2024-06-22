@@ -35,11 +35,11 @@ dependencies {
 }
 
 
-//tasks.withType(Test).configureEach {
-  //  useJUnitPlatform {
-   //     includeTags("demoqa")
-  //  }
-//}
+tasks.withType(Test).configureEach {
+   useJUnitPlatform {
+   includeTags("demoqa")
+   }
+}
 
 tasks.withType(Test) {
     useJUnitPlatform()
