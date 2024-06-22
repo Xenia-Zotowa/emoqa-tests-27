@@ -56,7 +56,7 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
         });
     }
 
-   /* @Test
+    @Test
 
     void miniFormTest(){
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -92,8 +92,6 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
         step("Проверяем, что не заполненные поля выделились красным", () -> {
        registrationPage.checkOutColorRed();
         });
-   }/
-
-    */
+   }
 }
 
