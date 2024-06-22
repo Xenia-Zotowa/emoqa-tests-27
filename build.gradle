@@ -3,51 +3,55 @@ plugins {
     id 'io.qameta.allure' version '2.11.2'
 }
 
-repositories {
-    mavenCentral()
-}
-
-def allureVersion = "2.21.0",
-    selenideVersion = "7.0.1"
-
 allure {
     report {
-        version.set(allureVersion)
+        version.set("2.27.0")
     }
-    adapter {
-        aspectjWeaver.set(true)
+    adapter { // отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true) //обработка аннотации @Step
         frameworks {
-            junit5 {
-                adapterVersion.set(allureVersion)
+            junit5 { //название фреймворка
+                adapterVersion.set("2.27.0") //версия интеграции фреймворка и Allure
             }
         }
     }
 }
 
+repositories {
+    mavenCentral()
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
     testImplementation(
-            'com.codeborne:selenide:7.0.1',
-            "org.junit.jupiter:junit-jupiter:5.10.0",
-            'org.slf4j:slf4j-simple:2.0.7',
-            "io.qameta.allure:allure-selenide:$allureVersion",
-            'com.github.javafaker:javafaker:1.0.2'
+            'com.codeborne:selenide:7.2.3',
+            'org.junit.jupiter:junit-jupiter:5.10.2',
+            'com.github.javafaker:javafaker:1.0.2',
+            "org.slf4j:slf4j-simple:1.7.36",
+            'io.qameta.allure:allure-selenide:2.27.0'
     )
 }
 
-
-tasks.withType(Test).configureEach {
-   useJUnitPlatform {
-   includeTags("demoqa")
-   }
-}
-
 tasks.withType(Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform()
 
     testLogging {
         lifecycle {
-            events "passed", "skipped", "failed", "standardOut", "standardError"
-            exceptionFormat "full"
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
         }
+    }
+}
+
+task practice_form_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("demoqa")
     }
 }
