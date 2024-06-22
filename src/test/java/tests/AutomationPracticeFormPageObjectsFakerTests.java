@@ -1,9 +1,13 @@
 package tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
 import faker.FakerRandom;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+
+import static io.qameta.allure.Allure.step;
 
 
 public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
@@ -15,10 +19,14 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
     @Test
     @Tag("demoqa")
     void fillFormTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
+        step("Открываем страницу и закрываем баннер", () -> {
         registrationPage.openPage()
-                .removeBanner()
-                .setFirstName(fakerRandom.firstName)
+                .removeBanner();
+        });
+        step("Наполняем форму ввода данных", () -> {
+        registrationPage.setFirstName(fakerRandom.firstName)
                 .setLastName(fakerRandom.lastName)
                 .setEmail(fakerRandom.userEmail)
                 .setGender(fakerRandom.gender)
@@ -32,8 +40,9 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
                 .setCity(fakerRandom.city)
                 .clickSubmit()
         ;
+        });
 
-
+        step("Проверяем корректность заполнения данных", () -> {
         registrationPage.checkResult("Student Name", fakerRandom.firstName + " " + fakerRandom.lastName)
                 .checkResult("Student Email", fakerRandom.userEmail)
                 .checkResult("Gender", fakerRandom.gender)
@@ -44,34 +53,45 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
                 .checkResult("Picture", fakerRandom.photo)
                 .checkResult("Address", fakerRandom.streetAddress)
                 .checkResult("State and City", fakerRandom.state + " " + fakerRandom.city);
-
+        });
     }
 
     @Test
 
     void miniFormTest(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
-        registrationPage.openPage()
-                .setFirstName(fakerRandom.firstName)
+        step("Открываем страницу и закрываем баннер", () -> {
+            registrationPage.openPage()
+                    .removeBanner();
+        });
+        step("Наполняем форму ввода данных", () -> {
+        registrationPage.setFirstName(fakerRandom.firstName)
                 .setLastName(fakerRandom.lastName)
                 .setGender(fakerRandom.gender)
                 .setUserNumber(fakerRandom.userPhone)
                 .clickSubmit();
-
-
+        });
+        step("Проверяем корректность заполнения данных", () -> {
         registrationPage.checkResult("Student Name", fakerRandom.firstName + " " + fakerRandom.lastName)
                 .checkResult("Gender", fakerRandom.gender)
                 .checkResult("Mobile", fakerRandom.userPhone);
-
+        });
     }
 
     @Test
     void negativeFormTest(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
-        registrationPage.openPage()
-                .clickSubmit();
+        step("Открываем страницу, закрываем баннер и нажимаем на кнопку отправить", () -> {
+            registrationPage.openPage()
+                    .removeBanner()
+                    .clickSubmit();
+        });
 
-        registrationPage.checkOutColorRed();
-    }
+        step("Проверяем, что не заполненные поля выделились красным", () -> {
+       registrationPage.checkOutColorRed();
+        });
+   }
 }
 
