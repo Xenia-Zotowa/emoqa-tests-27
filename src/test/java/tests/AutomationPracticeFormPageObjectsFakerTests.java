@@ -25,7 +25,7 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
         registrationPage.openPage()
                 .removeBanner();
         });
-        step("Наполняем форму ввода данных", () -> {
+        step("Наполняем форму ввода данных с помощью Faker", () -> {
         registrationPage.setFirstName(fakerRandom.firstName)
                 .setLastName(fakerRandom.lastName)
                 .setEmail(fakerRandom.userEmail)
