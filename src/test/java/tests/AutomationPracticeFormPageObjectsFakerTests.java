@@ -23,7 +23,7 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
 
         step("Открываем страницу и закрываем баннер", () -> {
         registrationPage.openPage()
-                .removeBanner();
+                    .removeBanner();
         });
         step("Наполняем форму ввода данных с помощью Faker", () -> {
         registrationPage.setFirstName(fakerRandom.firstName)
@@ -38,6 +38,7 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
                 .setStateCity(fakerRandom.state)
                 .setDataOfBirt(fakerRandom.day , fakerRandom.month , fakerRandom.year)
                 .setCity(fakerRandom.city)
+                .removeBanner()
                 .clickSubmit()
         ;
         });
@@ -62,14 +63,14 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Открываем страницу и закрываем баннер", () -> {
-            registrationPage.openPage()
-                    .removeBanner();
+            registrationPage.openPage();
         });
         step("Наполняем форму ввода данных", () -> {
         registrationPage.setFirstName(fakerRandom.firstName)
                 .setLastName(fakerRandom.lastName)
                 .setGender(fakerRandom.gender)
                 .setUserNumber(fakerRandom.userPhone)
+                .removeBanner()
                 .clickSubmit();
         });
         step("Проверяем корректность заполнения данных", () -> {
