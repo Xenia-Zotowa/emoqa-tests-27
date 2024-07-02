@@ -37,7 +37,7 @@ dependencies {
     )
 }
 
-tasks.withType(Test) {
+tasks.withType(Test).configureEach {
     systemProperties(System.getProperties())
     useJUnitPlatform()
 
@@ -49,8 +49,11 @@ tasks.withType(Test) {
     }
 }
 
-task practice_form_tests(type: Test) {
+tasks.register('registrationTests', Test) {
     useJUnitPlatform {
         includeTags("demoqa")
     }
+}
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }
