@@ -54,3 +54,6 @@ tasks.register('registrationTests', Test) {
         includeTags("demoqa")
     }
 }
+test{
+    useJUnitPlatform()
+}
