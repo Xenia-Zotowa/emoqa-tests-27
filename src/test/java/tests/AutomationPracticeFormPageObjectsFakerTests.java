@@ -39,7 +39,6 @@ public class AutomationPracticeFormPageObjectsFakerTests extends TestBase {
                 .setDataOfBirt(fakerRandom.day , fakerRandom.month , fakerRandom.year)
                 .setCity(fakerRandom.city)
                 .removeBanner()
-                .removeBanner()
                 .clickSubmit()
         ;
         });

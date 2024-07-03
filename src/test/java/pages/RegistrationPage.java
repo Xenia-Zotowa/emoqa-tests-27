@@ -111,6 +111,7 @@ public class RegistrationPage {
     }
 
     public void clickSubmit() {
+        submitButton.scrollIntoView(true);
         submitButton.click();
     }
 
