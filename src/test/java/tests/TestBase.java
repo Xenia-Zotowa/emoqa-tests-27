@@ -22,10 +22,10 @@ public class TestBase {
 
         Configuration.pageLoadStrategy = "eager";
         Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-        Configuration.browserVersion = System.getProperty("brozerVersion", "121");
+        Configuration.browserSize = System.getProperty("size", "800x600");
+        Configuration.browserVersion = System.getProperty("version", "120");
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.remote = "https://user1:1234@" + System.getProperty("selenoidUrl", "selenoid.autotests.cloud") + "/wd/hub";
+        Configuration.remote = "https://user1:1234@" + System.getProperty("selenoid", "selenoid.autotests.cloud") + "/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
